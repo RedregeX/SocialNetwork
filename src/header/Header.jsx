@@ -1,7 +1,7 @@
 function Header() {
   return (
     <>
-        <p>Social</p>
+        <div>Social</div>
     </>
   );
 }

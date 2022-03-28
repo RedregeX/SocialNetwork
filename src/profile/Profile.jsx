@@ -1,8 +1,6 @@
 function Profile() {
     return (
-      <>
-          <p>Social</p>
-      </>
+        <div>Social</div>
     );
   }
   

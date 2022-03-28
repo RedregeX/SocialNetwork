@@ -6,11 +6,11 @@ import Sidebar from './SideBar/Sidebar';
 
 function App() {
   return (
-    <>
+    <div class="wrapper">
       <Header />
       <Profile />
       <Sidebar />
-    </>
+    </div>
   );
 }
 

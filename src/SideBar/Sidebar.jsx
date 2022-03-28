@@ -1,8 +1,6 @@
 function Sidebar() {
     return (
-      <>
-          <p>Social</p>
-      </>
+      <div>Social</div>
     );
   }
   
