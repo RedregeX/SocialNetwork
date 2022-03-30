@@ -1,0 +1,10 @@
+.sidebar a{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px;
+    color: black;
+}
+  .sidebar a:hover{
+    color: white;
+}

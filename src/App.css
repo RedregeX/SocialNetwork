@@ -7,8 +7,21 @@ body{
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
-.wrapper > div{
+.sideprofile{
+  display: flex;
+}
+.profile{
+  width: 83%;
+}
+.sidebar{
+  width: 17%;
+}
+.header, .profile, .sidebar{
   background-color: rgb(70, 79, 121);
   border-radius: 10px;
+  margin: 5px;
 }
