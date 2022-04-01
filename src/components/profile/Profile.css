@@ -1,3 +1,20 @@
 .steve{
-    width: 100px;
+    width: 25%;
+    margin-right: 10px;
+}
+.name{
+    width: 75%;
+}
+.aboutme{
+    display: flex;
+}
+.posts{
+    margin: 10px;
+}
+.ministeve{
+    width: 50px;
+    margin: 5px;
+}
+.myposts{
+    font-size: 20px;
 }
