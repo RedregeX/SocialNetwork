@@ -7,6 +7,8 @@ function Profile() {
             <div className="aboutme">
                 <img src={steve} alt="photo" class="steve"/>
                 <p class="name">Steve Jobs</p>
+                <p class="from">Lives in California</p>
+                <p class="job">Works at Apple</p>
             </div>
             <div className="posts">
                 <p class="myposts">My posts</p>
