@@ -2,9 +2,6 @@
     width: 25%;
     margin-right: 10px;
 }
-.name{
-    width: 75%;
-}
 .aboutme{
     display: flex;
 }
@@ -17,4 +14,9 @@
 }
 .myposts{
     font-size: 20px;
+}
+.info{
+    display: flex;
+    width: 75%;
+    flex-direction: column;
 }
