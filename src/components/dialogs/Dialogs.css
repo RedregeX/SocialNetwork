@@ -1,0 +1,12 @@
+.message{
+    display: flex;
+    justify-content: space-evenly;
+}
+.dialogs{
+    flex-flow: column nowrap;
+    display: flex;
+}
+.send, input{
+    width: 30%;
+    margin: 0 auto;
+}

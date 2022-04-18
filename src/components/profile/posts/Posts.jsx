@@ -4,7 +4,7 @@ function Posts() {
     return (
         <div className="posts">
             <div className="posts">
-                <p class="myposts">My posts</p>
+                <p className="myposts">My posts</p>
                 <input type="text" placeholder='Enter the post'/>
                 <button>Add a post</button>
             </div>

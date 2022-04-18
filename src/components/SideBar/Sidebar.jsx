@@ -1,11 +1,14 @@
 import './Sidebar.css'
+import {NavLink} from 'react-router-dom'
+import React from 'react'
 
 function Sidebar() {
     return (
-      <div class = "sidebar">
-        <a href="">Friends</a>
-        <a href="">Messages</a>
-        <a href="">Profile</a>
+      <div className="sidebar">
+        <NavLink to="/friends">Friends</NavLink>
+        <NavLink to="/messages">Messages</NavLink>
+        <NavLink to="/profile">Profile</NavLink>
+        <NavLink to="/dialogs">Dialogs</NavLink>
       </div>
     );
   }
