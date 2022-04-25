@@ -1,10 +1,11 @@
 import './Header.css';
 import logo from '../../images/icons8-wechat.svg';
+import {NavLink} from 'react-router-dom'
 
 function Header() {
   return (
     <div className = "header">
-      <img src={logo} alt="logo" />
+      <NavLink to="/profile"><img src={logo} alt="logo" /></NavLink>
     </div>
   );
 }
