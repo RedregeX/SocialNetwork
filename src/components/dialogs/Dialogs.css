@@ -1,12 +1,26 @@
-.message{
-    display: flex;
-    justify-content: space-evenly;
-}
 .dialogs{
-    flex-flow: column nowrap;
+    background-color: rgb(70, 79, 121);
+    border-radius: 10px;
+    margin: 5px;
+}
+.usmes{
     display: flex;
+    justify-content: space-around;
 }
 .send, input{
     width: 30%;
     margin: 0 auto;
+}
+.username a{
+    display: block;
+    margin: 16px;
+    text-decoration: none;
+    color: aqua;
+}
+.username a:hover{
+    color: rgb(0, 109, 109);
+}
+.binput{
+    margin: 0 auto;
+    display: flex;
 }

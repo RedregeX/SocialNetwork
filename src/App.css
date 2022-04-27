@@ -20,7 +20,7 @@ body{
 .sidebar{
   width: 17%;
 }
-.header, .profile, .sidebar{
+.header, .profile, .sidebar, .dialogs{
   background-color: rgb(70, 79, 121);
   border-radius: 10px;
   margin: 5px;
