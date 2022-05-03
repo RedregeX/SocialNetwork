@@ -21,7 +21,7 @@ function Dialogs() {
                 </div>
             </div>
             <div className="binput">
-                <input type="text" placeholder="Enter your message"/>
+                <input type="text" placeholder="Enter your message" className="enter"/>
                 <button className="send">Send</button>
             </div>
         </div>
