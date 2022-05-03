@@ -11,15 +11,9 @@ function Dialogs() {
         <div className="dialogs">
             <div className="usmes">
                 <div className="Usernames">
-                    {/* <DII name={DialogNames[0].name} id={DialogNames[0].id}/>
-                    <DII name={DialogNames[1].name} id={DialogNames[1].id}/>
-                    <DII name={DialogNames[2].name} id={DialogNames[2].id}/> */}
                     {DialogNames.map(e => <DII  name={e.name} id={e.id}/>)}
                 </div> 
                 <div className="messages">
-                    {/* <Messages message={DialogMessages[0].message} id={DialogMessages[0].id} />
-                    <Messages message={DialogMessages[1].message} id={DialogMessages[1].id} />
-                    <Messages message={DialogMessages[2].message} id={DialogMessages[2].id} /> */}
                     {DialogMessages.map(e => <Messages  message={e.message} id={e.id}/>)}
                 </div>
             </div>

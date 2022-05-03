@@ -1,0 +1,11 @@
+.likes{
+    background-color: blueviolet;
+    border-radius: 10%;
+    padding: 10px;
+    margin-bottom: 5px;
+    display: inline-block;
+    cursor: pointer;
+}
+.likes:hover{
+    color: rgb(0, 255, 0);
+}
