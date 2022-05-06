@@ -2,11 +2,11 @@ import './Profile.css';
 import Posts from './posts/Posts';
 import ProfileInfo from './profileinfo/ProfileInfo';
 
-function Profile() {
+function Profile(props) {
     return (
         <div className = "profile">
             <ProfileInfo />
-            <Posts />
+            <Posts ePosts = {props.ePosts}/>
         </div>
     );
   }

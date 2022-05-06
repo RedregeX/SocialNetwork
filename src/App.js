@@ -6,16 +6,16 @@ import Sidebar from './components/SideBar/Sidebar';
 import Dialogs from './components/dialogs/Dialogs';
 import {BrowserRouter, Route} from 'react-router-dom';
 
-function App() {
+function App(props) {
   return (
     <div className="wrapper">
       <BrowserRouter>
         <Header />
         <div className="sideprofile">
           <Sidebar />
-          <Route path = "/profile" component = {Profile}/>
+          <Route path = "/profile" render = {() => <Profile ePosts = {props.ePosts}/>}/>
         </div>
-        <Route path = "/dialogs" component = {Dialogs}/>
+        <Route path = "/dialogs" render = {() => <Dialogs DialogMessages = {props.DialogMessages} DialogNames = {props.DialogNames}/>}/>
       </BrowserRouter>
     </div>
   );
