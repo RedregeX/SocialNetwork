@@ -13,9 +13,9 @@ function App(props) {
         <Header />
         <div className="sideprofile">
           <Sidebar />
-          <Route path = "/profile" render = {() => <Profile ePosts = {props.State.ePosts}/>}/>
+          <Route path = "/profile" render = {() => <Profile ePosts = {props.State.profile.ePosts}/>}/>
         </div>
-        <Route path = "/dialogs" render = {() => <Dialogs DialogMessages = {props.State.DialogMessages} DialogNames = {props.State.DialogNames}/>}/>
+        <Route path = "/dialogs" render = {() => <Dialogs DialogMessages = {props.State.dialogs.DialogMessages} DialogNames = {props.State.dialogs.DialogNames}/>}/>
       </BrowserRouter>
     </div>
   );
