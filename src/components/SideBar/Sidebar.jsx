@@ -2,15 +2,27 @@ import './Sidebar.css'
 import {NavLink} from 'react-router-dom'
 import React from 'react'
 
-function Sidebar() {
+function Sidebar(props) {
     return (
       <div className="sidebar">
         <NavLink to="/friends">Friends</NavLink>
         <NavLink to="/messages">Messages</NavLink>
         <NavLink to="/profile">Profile</NavLink>
         <NavLink to="/dialogs">Dialogs</NavLink>
+        <div className="friends">
+          <p className='friends'>Friends</p>
+          {props.friends.map(e => {
+            return (
+              <div className="container">
+                <img src={e.img}></img>
+                <br />
+                <p>{e.name}</p>
+              </div>
+            );
+          })}
+        </div>
       </div>
-    );
-  }
+  );
+}
   
-  export default Sidebar;
+export default Sidebar;

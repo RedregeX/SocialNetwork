@@ -12,7 +12,7 @@ function App(props) {
       <BrowserRouter>
         <Header />
         <div className="sideprofile">
-          <Sidebar />
+          <Sidebar friends = {props.State.sidebar}/>
           <Route path = "/profile" render = {() => <Profile ePosts = {props.State.profile.ePosts}/>}/>
         </div>
         <Route path = "/dialogs" render = {() => <Dialogs DialogMessages = {props.State.dialogs.DialogMessages} DialogNames = {props.State.dialogs.DialogNames}/>}/>

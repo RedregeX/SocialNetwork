@@ -19,6 +19,13 @@ let State = {
             {message:"You are dead", id:3}
         ]
     },
+    sidebar: {
+        friends : [
+            {name: "Bill Gates", img:"../images/bill.jpg"},
+            {name: "Linus Tech", img:"../images/maxresdefault.jpg"},
+            {name: "Donald Trump", img:"../images/donald.jpg"},
+        ],
+    }
 };
 
 export default State;
