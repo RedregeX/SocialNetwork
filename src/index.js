@@ -4,10 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import State from './data/State';
+import {addPost} from './data/State';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App State = {State}/>
+    <App State = {State} addPost = {addPost}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

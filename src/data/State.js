@@ -28,4 +28,14 @@ let State = {
     }
 };
 
+export let addPost = (postText) => {
+    let newPost = {
+        text: postText,
+        id: 4,
+        likes: 100000,
+    }
+    State.profile.ePosts.push(newPost);
+    console.log(State.profile.ePosts)
+}
+
 export default State;
