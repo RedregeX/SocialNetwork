@@ -15,7 +15,7 @@ function App(props) {
           <Sidebar friends = {props.State.sidebar.friends}/>
           <Route path = "/profile" render = {() => <Profile ePosts = {props.State.profile.ePosts} addPost = {props.addPost}/>}/>
         </div>
-        <Route path = "/dialogs" render = {() => <Dialogs DialogMessages = {props.State.dialogs.DialogMessages} DialogNames = {props.State.dialogs.DialogNames}/>}/>
+        <Route path = "/dialogs" render = {() => <Dialogs DialogMessages = {props.State.dialogs.DialogMessages} DialogNames = {props.State.dialogs.DialogNames} setMessage = {props.setMessage}/>}/>
       </BrowserRouter>
     </div>
   );

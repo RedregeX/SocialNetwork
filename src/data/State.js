@@ -39,7 +39,13 @@ export let addPost = (postText) => {
         likes: 100000,
     }
     State.profile.ePosts.push(newPost);
-    console.log(State.profile.ePosts)
 }
-
+export let setMessage = (message) =>{
+    let newMessage = {
+        message: message,
+        id: 4,
+    }
+    State.dialogs.DialogMessages.push(newMessage);
+    console.log(State);
+}
 export default State;

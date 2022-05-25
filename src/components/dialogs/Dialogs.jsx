@@ -3,8 +3,14 @@ import {NavLink} from 'react-router-dom'
 import {Route} from 'react-router-dom';
 import DII from "./dialogIsItem/DII";
 import Messages from "./messages/Messages";
+import React from 'react'
+
+let newMessage = React.createRef();
 
 function Dialogs(props) {
+    let setMessage = () => {
+        props.setMessage(newMessage.current.value);
+    }
     return (
         <div className="dialogs">
             <div className="usmes">
@@ -16,8 +22,8 @@ function Dialogs(props) {
                 </div>
             </div>
             <div className="binput">
-                <input type="text" placeholder="Enter your message" className="enter"/>
-                <button className="send">Send</button>
+                <input type="text" placeholder="Enter your message" className="enter" ref={newMessage}/>
+                <button className="send" onClick={setMessage}>Send</button>
             </div>
         </div>
     );
