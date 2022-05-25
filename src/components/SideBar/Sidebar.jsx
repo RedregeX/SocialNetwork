@@ -1,6 +1,6 @@
-import './Sidebar.css'
-import {NavLink} from 'react-router-dom'
-import React from 'react'
+import './Sidebar.css';
+import {NavLink} from 'react-router-dom';
+import React from 'react';
 
 function Sidebar(props) {
     return (
@@ -9,8 +9,8 @@ function Sidebar(props) {
         <NavLink to="/messages">Messages</NavLink>
         <NavLink to="/profile">Profile</NavLink>
         <NavLink to="/dialogs">Dialogs</NavLink>
+        <p className='friendsPar'>Friends</p>
         <div className="friends">
-          <p className='friends'>Friends</p>
           {props.friends.map(e => {
             return (
               <div className="container">

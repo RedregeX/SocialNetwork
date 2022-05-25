@@ -8,3 +8,21 @@
   .sidebar a:hover{
     color: white;
 }
+.friends{
+  display: flex;
+  justify-content: space-around;
+}
+.container{
+  width: 30%;
+  text-align: center;
+}
+.sidebar img{
+  width: 40px;
+  height: 40px;
+}
+.friendsPar{
+  text-align: center;
+}
+.friendsP{
+  display: flex;
+}

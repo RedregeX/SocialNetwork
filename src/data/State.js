@@ -1,3 +1,7 @@
+import bill from "../images/bill.jpg";
+import max from "../images/maxresdefault.jpg";
+import don from "../images/donald.jpg";
+
 let State = {
     profile: {
         ePosts: [
@@ -21,16 +25,16 @@ let State = {
     },
     sidebar: {
         friends : [
-            {name: "Bill Gates", img:"../images/bill.jpg"},
-            {name: "Linus Tech", img:"../images/maxresdefault.jpg"},
-            {name: "Donald Trump", img:"../images/donald.jpg"},
+            {name: "Bill", img:bill},
+            {name: "Linus", img:max},
+            {name: "Donald", img:don},
         ],
     }
 };
 
 export let addPost = (postText) => {
     let newPost = {
-        text: postText,
+        message: postText,
         id: 4,
         likes: 100000,
     }
