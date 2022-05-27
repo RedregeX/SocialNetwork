@@ -1,6 +1,7 @@
 import bill from "../images/bill.jpg";
 import max from "../images/maxresdefault.jpg";
 import don from "../images/donald.jpg";
+import {rerenderTree} from '../render.js';
 
 let State = {
     profile: {
@@ -31,21 +32,22 @@ let State = {
         ],
     }
 };
-
 export let addPost = (postText) => {
     let newPost = {
         message: postText,
         id: 4,
         likes: 100000,
     }
-    State.profile.ePosts.push(newPost);
+    
+    State.profile.ePosts.unshift(newPost);
+    rerenderTree(State);
 }
 export let setMessage = (message) =>{
     let newMessage = {
         message: message,
         id: 4,
     }
-    State.dialogs.DialogMessages.push(newMessage);
-    console.log(State);
+    State.dialogs.DialogMessages.unshift(newMessage);
+    rerenderTree(State);
 }
 export default State;
