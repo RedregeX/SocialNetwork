@@ -11,18 +11,21 @@ function Dialogs(props) {
     let setMessage = () => {
         props.setMessage(newMessage.current.value);
     }
+    let onMessageChange = () => {
+        props.onMessageChange(newMessage.current.value);
+    }
     return (
         <div className="dialogs">
             <div className="usmes">
                 <div className="Usernames">
-                    {props.DialogNames.map(e => <DII  name={e.name} id={e.id}/>)}
+                    {props.DialogNames.map(e => <DII  name={e.name} key={e.id}/>)}
                 </div> 
                 <div className="messages">
-                    {props.DialogMessages.map(e => <Messages  message={e.message} id={e.id}/>)}
+                    {props.DialogMessages.map(e => <Messages  message={e.message} key={e.id}/>)}
                 </div>
             </div>
             <div className="binput">
-                <input type="text" placeholder="Enter your message" className="enter" ref={newMessage}/>
+                <input type="text" placeholder="Enter your message" className="enter" ref={newMessage} onChange={onMessageChange} value={props.newSendMessage}/>
                 <button className="send" onClick={setMessage}>Send</button>
             </div>
         </div>

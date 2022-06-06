@@ -6,7 +6,7 @@ function Profile(props) {
     return (
         <div className = "profile">
             <ProfileInfo />
-            <Posts ePosts = {props.ePosts} addPost = {props.addPost}/>
+            <Posts ePosts = {props.ePosts} addPost = {props.addPost} newPostText ={props.newPostText} onPostChange = {props.onPostChange}/>
         </div>
     );
   }

@@ -13,7 +13,7 @@ function Sidebar(props) {
         <div className="friends">
           {props.friends.map(e => {
             return (
-              <div className="container">
+              <div className="container" key={e.id}>
                 <img src={e.img}></img>
                 <br />
                 <p>{e.name}</p>
