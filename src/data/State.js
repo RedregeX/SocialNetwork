@@ -38,16 +38,16 @@ let store = {
         this._state.profile.newPostText = postText;
         this.rerenderTree(this._state);
     },
-    addPost(postText){
-        let newPost = {
-            message: postText,
-            id: 4,
-            likes: 100000,
-        }
-        this._state.profile.newPostText = "";
-        this._state.profile.ePosts.unshift(newPost);
-        this.rerenderTree(this._state);
-    },
+    // addPost(postText){
+    //     let newPost = {
+    //         message: postText,
+    //         id: 4,
+    //         likes: 100000,
+    //     }
+    //     this._state.profile.newPostText = "";
+    //     this._state.profile.ePosts.unshift(newPost);
+    //     this.rerenderTree(this._state);
+    // },
     onMessageChange(sendMessage){
         this._state.dialogs.newSendMessage = sendMessage;
         this.rerenderTree(this._state);
@@ -69,6 +69,18 @@ let store = {
     },
     getState(){
         return this._state;
+    },
+    dispatch(action){
+        if (action.type == "ADD-POST"){
+            let newPost = {
+                message: postText,
+                id: 4,
+                likes: 100000,
+            }
+            this._state.profile.newPostText = "";
+            this._state.profile.ePosts.unshift(newPost);
+            this.rerenderTree(this._state);
+        }
     }
 }
 

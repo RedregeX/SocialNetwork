@@ -26,3 +26,4 @@ rerenderTree(store.getState());
 store.subscribe(rerenderTree);
 reportWebVitals();
 
+// dispatch object that will get action and will give result of getting method that is needed
