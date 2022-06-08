@@ -12,10 +12,10 @@ function App(props) {
       <BrowserRouter>
         <Header />
         <div className="sideprofile">
-          <Sidebar friends = {props.State.sidebar.friends}/>
-          <Route path = "/profile" render = {() => <Profile ePosts = {props.State.profile.ePosts} addPost = {props.addPost} newPostText = {props.State.profile.newPostText} onPostChange = {props.onPostChange}/>}/>
+          <Sidebar friends = {props.state.sidebar.friends}/>
+          <Route path = "/profile" render = {() => <Profile ePosts = {props.state.profile.ePosts} addPost = {props.addPost} newPostText = {props.state.profile.newPostText} onPostChange = {props.onPostChange}/>}/>
         </div>
-        <Route path = "/dialogs" render = {() => <Dialogs DialogMessages = {props.State.dialogs.DialogMessages} DialogNames = {props.State.dialogs.DialogNames} setMessage = {props.setMessage} onMessageChange = {props.onMessageChange}/>}/>
+        <Route path = "/dialogs" render = {() => <Dialogs DialogMessages = {props.state.dialogs.DialogMessages} DialogNames = {props.state.dialogs.DialogNames} setMessage = {props.setMessage} onMessageChange = {props.onMessageChange}/>}/>
       </BrowserRouter>
     </div>
   );
