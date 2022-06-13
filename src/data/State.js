@@ -20,9 +20,9 @@ let store = {
                 {name:"Silvester Stallone", id:3}
             ],
             DialogMessages: [
-                {message:"When is apple going to shutdown", id:1}, 
-                {message:"This is bla bla bla", id:2}, 
-                {message:"You are dead", id:3}
+                {message:"When is apple going to shutdown", id:1, key:1}, 
+                {message:"This is bla bla bla", id:2, key:2}, 
+                {message:"You are dead", id:3, key:3}
             ],
             newSendMessage: ""
         },
@@ -34,10 +34,10 @@ let store = {
             ],
         }
     },
-    onPostChange(postText){
-        this._state.profile.newPostText = postText;
-        this.rerenderTree(this._state);
-    },
+    // onPostChange(postText){
+    //     this._state.profile.newPostText = postText;
+    //     this.rerenderTree(this._state);
+    // },
     // addPost(postText){
     //     let newPost = {
     //         message: postText,
@@ -48,19 +48,19 @@ let store = {
     //     this._state.profile.ePosts.unshift(newPost);
     //     this.rerenderTree(this._state);
     // },
-    onMessageChange(sendMessage){
-        this._state.dialogs.newSendMessage = sendMessage;
-        this.rerenderTree(this._state);
-    },
-    setMessage(message){
-        let newMessage = {
-            message: message,
-            id: 4,
-        }
-        this._state.dialogs.newSendMessage = "";
-        this._state.dialogs.DialogMessages.unshift(newMessage);
-        this.rerenderTree(this._state);
-    },
+    // onMessageChange(sendMessage){
+    //     this._state.dialogs.newSendMessage = sendMessage;
+    //     this.rerenderTree(this._state);
+    // },
+    // setMessage(message){
+    //     let newMessage = {
+    //         message: message,
+    //         id: 4,
+    //     }
+    //     this._state.dialogs.newSendMessage = "";
+    //     this._state.dialogs.DialogMessages.unshift(newMessage);
+    //     this.rerenderTree(this._state);
+    // },
     subscribe(abserver){
         this.rerenderTree = abserver;
     },
@@ -73,12 +73,29 @@ let store = {
     dispatch(action){
         if (action.type == "ADD-POST"){
             let newPost = {
-                message: postText,
+                message: this._state.profile.newPostText,
                 id: 4,
                 likes: 100000,
             }
             this._state.profile.newPostText = "";
             this._state.profile.ePosts.unshift(newPost);
+            this.rerenderTree(this._state);
+        }
+        else if (action.type == "ON-POST-CHANGE"){
+            this._state.profile.newPostText = action.text;
+            this.rerenderTree(this._state);
+        }
+        else if (action.type == "ON-MESSAGE-CHAGE"){
+            this._state.dialogs.newSendMessage = action.text;
+            this.rerenderTree(this._state);
+        }
+        else if (action.type == "SET-MESSAGE"){
+            let newMessage = {
+                message: this._state.dialogs.newSendMessage,
+                id: 5,
+            }
+            this._state.dialogs.newSendMessage = "";
+            this._state.dialogs.DialogMessages.unshift(newMessage);
             this.rerenderTree(this._state);
         }
     }

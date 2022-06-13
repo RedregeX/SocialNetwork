@@ -9,10 +9,10 @@ let newMessage = React.createRef();
 
 function Dialogs(props) {
     let setMessage = () => {
-        props.setMessage(newMessage.current.value);
+        props.dispatch({type : "SET-MESSAGE"});
     }
     let onMessageChange = () => {
-        props.onMessageChange(newMessage.current.value);
+        props.dispatch({type : "ON-MESSAGE-CHANGE", text : newMessage.current.value});
     }
     return (
         <div className="dialogs">

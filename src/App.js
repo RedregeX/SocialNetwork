@@ -12,9 +12,9 @@ function App(props) {
         <Header />
         <div className="sideprofile">
           <Sidebar friends = {props.state.sidebar.friends}/>
-          <Route path = "/profile" render = {() => <Profile ePosts = {props.state.profile.ePosts} addPost = {props.addPost} newPostText = {props.state.profile.newPostText} onPostChange = {props.onPostChange}/>}/>
+          <Route path = "/profile" render = {() => <Profile ePosts = {props.state.profile.ePosts} newPostText = {props.state.profile.newPostText} dispatch = {props.dispatch}/>}/>
         </div>
-        <Route path = "/dialogs" render = {() => <Dialogs DialogMessages = {props.state.dialogs.DialogMessages} DialogNames = {props.state.dialogs.DialogNames} setMessage = {props.setMessage} onMessageChange = {props.onMessageChange}/>}/>
+        <Route path = "/dialogs" render = {() => <Dialogs DialogMessages = {props.state.dialogs.DialogMessages} DialogNames = {props.state.dialogs.DialogNames} dispatch = {props.dispatch}/>}/>
       </BrowserRouter>
     </div>
   );
