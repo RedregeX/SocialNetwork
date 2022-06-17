@@ -3,16 +3,17 @@ import {NavLink} from 'react-router-dom'
 import {Route} from 'react-router-dom';
 import DII from "./dialogIsItem/DII";
 import Messages from "./messages/Messages";
-import React from 'react'
+import React from 'react';
+import {onMessageChangeAC, setMessageAC}  from '../../data/State';
 
 let newMessage = React.createRef();
 
 function Dialogs(props) {
     let setMessage = () => {
-        props.dispatch({type : "SET-MESSAGE"});
+        props.dispatch(setMessageAC());
     }
     let onMessageChange = () => {
-        props.dispatch({type : "ON-MESSAGE-CHANGE", text : newMessage.current.value});
+        props.dispatch(onMessageChangeAC(newMessage.current.value));
     }
     return (
         <div className="dialogs">

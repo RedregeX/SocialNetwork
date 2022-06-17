@@ -1,15 +1,16 @@
 import Post from './post/Post';
 import React from 'react'
+import {addPostAC, onPostChangeAC} from '../../../data/State'
 
 let postText = React.createRef();
 
 function Posts(props) {
     let addPost = () => {
-        props.dispatch({type : "ADD-POST"});
+        props.dispatch(addPostAC());
         postText.current.value = "";
     }
     let onPostChange = () => {
-        props.dispatch({type : "ON-POST-CHANGE", text : postText.current.value} );
+        props.dispatch(onPostChangeAC(postText.current.value));
     }
     return (
         <div className="posts">
