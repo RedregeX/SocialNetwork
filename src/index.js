@@ -10,7 +10,6 @@ import reportWebVitals from './reportWebVitals';
 // import { onMessageChange } from './data/_state';
 // import { subscribe } from './data/_state';
 
-
 export let rerenderTree = (_state) => {
     ReactDOM.render(
       <React.StrictMode>

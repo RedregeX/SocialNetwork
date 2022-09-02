@@ -4,7 +4,7 @@ import {Route} from 'react-router-dom';
 import DII from "./dialogIsItem/DII";
 import Messages from "./messages/Messages";
 import React from 'react';
-import {onMessageChangeAC, setMessageAC}  from '../../data/State';
+import {onMessageChangeAC, setMessageAC}  from '../../data/dialogsReduser';
 
 let newMessage = React.createRef();
 

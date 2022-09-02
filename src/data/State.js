@@ -1,10 +1,8 @@
 import bill from "../images/bill.jpg";
 import max from "../images/maxresdefault.jpg";
 import don from "../images/donald.jpg";
-const ADD_POST = "ADD-POST";
-const ON_POST_CHANGE = "ON-POST-CHANGE";
-const ON_MESSAGE_CHANGE = "ON-MESSAGE-CHANGE";
-const SET_MESSAGE = "SET-MESSAGE"
+import profileReduser from "./profileReduser";
+import dialogsReduser from "./dialogsReduser"
 
 let store = {
     _state: {
@@ -38,33 +36,6 @@ let store = {
             ],
         }
     },
-    // onPostChange(postText){
-    //     this._state.profile.newPostText = postText;
-    //     this.rerenderTree(this._state);
-    // },
-    // addPost(postText){
-    //     let newPost = {
-    //         message: postText,
-    //         id: 4,
-    //         likes: 100000,
-    //     }
-    //     this._state.profile.newPostText = "";
-    //     this._state.profile.ePosts.unshift(newPost);
-    //     this.rerenderTree(this._state);
-    // },
-    // onMessageChange(sendMessage){
-    //     this._state.dialogs.newSendMessage = sendMessage;
-    //     this.rerenderTree(this._state);
-    // },
-    // setMessage(message){
-    //     let newMessage = {
-    //         message: message,
-    //         id: 4,
-    //     }
-    //     this._state.dialogs.newSendMessage = "";
-    //     this._state.dialogs.DialogMessages.unshift(newMessage);
-    //     this.rerenderTree(this._state);
-    // },
     subscribe(abserver){
         this.rerenderTree = abserver;
     },
@@ -75,45 +46,23 @@ let store = {
         return this._state;
     },
     dispatch(action){
-        if (action.type === ADD_POST){
-            let newPost = {
-                message: this._state.profile.newPostText,
-                id: 4,
-                likes: 100000,
-            }
-            this._state.profile.newPostText = "";
-            this._state.profile.ePosts.unshift(newPost);
-            this.rerenderTree(this._state);
-        }
-        else if (action.type === ON_POST_CHANGE){
-            this._state.profile.newPostText = action.text;
-            this.rerenderTree(this._state);
-        }
-        else if (action.type === ON_MESSAGE_CHANGE){
-            this._state.dialogs.newSendMessage = action.text;
-            this.rerenderTree(this._state);
-        }
-        else if (action.type === SET_MESSAGE){
-            let newMessage = {
-                message: this._state.dialogs.newSendMessage,
-                id: 5,
-            }
-            this._state.dialogs.newSendMessage = "";
-            this._state.dialogs.DialogMessages.unshift(newMessage);
-            this.rerenderTree(this._state);
-        }
+        this._state.profile = profileReduser(action, this._state.profile);
+        this.rerenderTree(this._state); 
+        // if (action.type === ON_MESSAGE_CHANGE){
+        //     this._state.dialogs.newSendMessage = action.text;
+        //     this.rerenderTree(this._state);
+        // }
+        // else if (action.type === SET_MESSAGE){
+        //     let newMessage = {
+        //         message: this._state.dialogs.newSendMessage,
+        //         id: 5,
+        //     }
+        //     this._state.dialogs.newSendMessage = "";
+        //     this._state.dialogs.DialogMessages.unshift(newMessage);
+        //     this.rerenderTree(this._state);
+        // }
+        this._state.dialogs = dialogsReduser(action, this._state.dialogs);
+        this.rerenderTree(this._state); 
     }
-}
-export let addPostAC = () =>{
-    return {type : ADD_POST, id : 1};
-}
-export let onPostChangeAC = (postText) =>{
-    return {type : ON_POST_CHANGE, text : postText};
-}
-export let onMessageChangeAC = (newMessage) =>{
-    return {type : ON_MESSAGE_CHANGE, text : newMessage};
-}
-export let setMessageAC = () =>{
-    return {type : SET_MESSAGE, id : 1};
 }
 export default store;

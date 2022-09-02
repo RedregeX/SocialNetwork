@@ -1,6 +1,6 @@
 import Post from './post/Post';
 import React from 'react'
-import {addPostAC, onPostChangeAC} from '../../../data/State'
+import {addPostAC, onPostChangeAC} from '../../../data/profileReduser'
 
 let postText = React.createRef();
 
