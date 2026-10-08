@@ -1,0 +1,12 @@
+import React,{useState,useEffect,useRef} from 'react';
+import {ImagePlus,X,Send} from 'lucide-react';
+import {api,uploadImage} from '../lib/api.js';
+import {Avatar} from './UI.jsx';
+export default function Composer({user,onCreated,notify}){
+  const key=`social:draft:${user.id}`;
+  const [draft,setDraft]=useState(()=>{try{const d=JSON.parse(localStorage.getItem(key));return d&&typeof d.text==='string'&&d.text.length<=3000&&(!d.image||typeof d.image==='string'&&/^\/uploads\/[a-f0-9-]+\.(jpg|png|webp|gif)$/.test(d.image))?d:{text:'',image:null};}catch{return {text:'',image:null};}}),[busy,setBusy]=useState(false),[uploading,setUploading]=useState(false);const file=useRef(null),input=useRef(null);
+  useEffect(()=>{try{localStorage.setItem(key,JSON.stringify(draft));}catch{}},[key,draft]);
+  async function photo(e){const f=e.target.files?.[0];e.target.value='';if(!f)return;setUploading(true);try{const image=await uploadImage(f);setDraft(d=>({...d,image}));}catch(e){notify(e.message);}finally{setUploading(false);}}
+  async function publish(e){e.preventDefault();if(busy||uploading||!draft.text.trim()&&!draft.image)return;setBusy(true);try{const {post}=await api('/posts',{method:'POST',body:draft});setDraft({text:'',image:null});onCreated(post);notify('Your post is published.');}catch(e){notify(e.message);}finally{setBusy(false);}}
+  return <form className="composer" onSubmit={publish}><div className="composer-top"><Avatar user={user}/><textarea ref={input} aria-label="Write a post" maxLength={3000} rows={2} placeholder={`What’s on your mind, ${user.name.split(' ')[0]}?`} value={draft.text} onChange={e=>setDraft({...draft,text:e.target.value})}/></div>{draft.image?<div className="attachment-preview"><img src={draft.image} alt="Photo attached to your draft"/><button className="icon-button" type="button" aria-label="Remove attached photo" onClick={()=>setDraft({...draft,image:null})}><X size={18}/></button></div>:null}<div className="composer-actions"><input hidden ref={file} type="file" accept="image/png,image/jpeg,image/webp,image/gif" onChange={photo}/><button type="button" className="text-button" disabled={uploading||busy} onClick={()=>file.current.click()}><ImagePlus size={20}/>{uploading?'Uploading…':'Photo'}</button><span className="character-count">{draft.text.length>2500?`${draft.text.length}/3000`:''}</span><button className="button primary" disabled={busy||uploading||!draft.text.trim()&&!draft.image}>{busy?'Publishing…':'Publish'}<Send size={14} className="mobile-send"/></button></div></form>;
+}

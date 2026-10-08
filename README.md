@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# social. — rebuilt SocialNetwork
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The original React social-network idea rebuilt into a working small application: feed, profiles, friends and separate private conversations. The original Bill/Linus/Donald contacts and demo conversation names are retained, alongside a more useful seeded community.
 
-## Available Scripts
+## Run the included version
 
-In the project directory, you can run:
+Install **Node.js 24** (the version used for verification), then extract the ZIP.
 
-### `npm start`
+- **Windows:** double-click `start.bat`.
+- **macOS / Linux:** open a terminal in this folder and run `sh start.sh`.
+- Or run `npm start` in this folder on any platform.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open **http://localhost:3001**. Keep the terminal open while using the app. The compiled frontend is included in `dist`; **no npm dependency installation or external database is needed to run it**. The launcher starts the API and serves the frontend together.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Choose **Explore the demo** for a quick look, or **Create an account** for your own profile. All changes are real and saved in SQLite on this server.
 
-### `npm test`
+## Working features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Registration and sign-in with unique handles, salted password hashes and HTTP-only sessions.
+- Everyone / friends feed, paginated posts, image attachments and persistent composer drafts.
+- Publish, edit and delete your own posts; actual likes, comments and bookmarks.
+- Comment threads, comment deletion by the author or post owner, and shareable post links.
+- Profile pages, profile editing, uploaded avatar photos, initial avatars, bio and location.
+- Friend discovery, outgoing/incoming requests, acceptance, cancellation, removal and friend filtering.
+- Separate one-to-one conversations, sending, unread counts and read receipts.
+- New messages refresh every 3 seconds while the page is visible. Replies come from another account; no messages are fabricated.
+- Notifications for likes, comments, friendship requests/acceptance and messages.
+- Search people and posts, saved posts, password changes, sign-out and a personal JSON export.
+- Mobile feed navigation, responsive conversation list/chat, accessible focus states and dialogs.
 
-### `npm run build`
+## Try two real accounts
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Use your normal browser and a separate private/incognito window. Create a different account in each, then search for the other handle, send a friend request and start a conversation. Keep both windows on the **same server**. Each browser session has its own identity, while the database is shared.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+In local demo mode, the seeded handles include `alex`, `jamie`, `morgan`, `sam`, `taylor`, `casey`, `bill`, `linus`, `donald`, `rick`, `elon` and `silvester`. Their initial password is **social-demo-2026**. These are sample accounts, not connections to real people. The Explore button opens Alex's sample account. Changing a demo account's password affects that local account.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Where data lives
 
-### `npm run eject`
+The first launch creates `data/social.sqlite` and `data/uploads/` automatically. Posts, profiles, friendships, sessions, comments and messages persist after closing or restarting the server. Back up the **whole `data` directory** while the server is stopped. The archive contains no test database, session tokens or user uploads.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+`SOCIAL_DATA_DIR` changes the data location. `PORT` changes the port (default 3001). `HOST` defaults to `127.0.0.1`; remote access requires choosing an appropriate host and reachable server address.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+For a fresh non-demo installation, set `DEMO_MODE=0` **before the first launch with a new data directory**. This prevents sample-account seeding and removes the Explore button. Turning it off on an existing demo database disables the bypass button but does not erase those accounts. Real shared hosting needs HTTPS; set `COOKIE_SECURE=1` when serving through HTTPS. Keep the database directory writable and persistent. This server-based app cannot be hosted solely by uploading its `dist` folder to a static host.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Examples on macOS/Linux:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```sh
+# A fresh personal installation without sample accounts:
+DEMO_MODE=0 SOCIAL_DATA_DIR=./personal-data npm start
 
-## Learn More
+# A different local port:
+PORT=3011 npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+PowerShell uses environment variables such as `$env:DEMO_MODE="0"; $env:SOCIAL_DATA_DIR="./personal-data"; npm start`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Work on the source
 
-### Code Splitting
+```sh
+npm ci
+npm run dev
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The development frontend is at **http://localhost:5174**, with API requests proxied to the server at port 3001. Run `npm run build` after editing to update the included launchable version. Run `npm test` for the 10 API/database integration checks.
 
-### Analyzing the Bundle Size
+- `server/database.mjs`: schema and clearly marked sample data.
+- `server/index.mjs`: authentication, permissions, uploads and API routes.
+- `src/pages`: feed, profiles, friends, messages, settings and notifications.
+- `src/components`: reusable shell, avatars, dialogs, composer and post cards.
+- `src/lib`: API access and data hooks.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Verification and practical limits
 
-### Making a Progressive Web App
+Checked on Node 24. Tests exercise real registration/login, password changes, persisted posts and counts, friend request direction, private-message permissions, read receipts, image ownership, invalid inputs, session invalidation and a full server restart. Desktop and mobile browser interactions are also checked.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This is a compact self-contained application, without email verification, password-reset email, video calls, moderation tooling or cloud storage. The chat screen loads the latest 300 messages per conversation; stored earlier messages are retained in SQLite. The directory returns up to 200 matching people. Polling gives small-group live updates without an additional WebSocket service.
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The countryside image was generated specifically for this rebuild and is bundled locally. Original contact photos supplied in the project are retained in `public/legacy`. Inter's font license is included in `docs/INTER-LICENSE.txt`.
