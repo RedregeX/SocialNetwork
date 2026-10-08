@@ -1,4 +1,4 @@
-# social. — rebuilt SocialNetwork
+# social - rebuilt SocialNetwork
 
 The original React social-network idea rebuilt into a working small application: feed, profiles, friends and separate private conversations. The original Bill/Linus/Donald contacts and demo conversation names are retained, alongside a more useful seeded community.
 
