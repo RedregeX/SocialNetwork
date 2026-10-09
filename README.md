@@ -69,10 +69,4 @@ The development frontend is at **http://localhost:5174**, with API requests prox
 - `src/components`: reusable shell, avatars, dialogs, composer and post cards.
 - `src/lib`: API access and data hooks.
 
-## Verification and practical limits
 
-Checked on Node 24. Tests exercise real registration/login, password changes, persisted posts and counts, friend request direction, private-message permissions, read receipts, image ownership, invalid inputs, session invalidation and a full server restart. Desktop and mobile browser interactions are also checked.
-
-This is a compact self-contained application, without email verification, password-reset email, video calls, moderation tooling or cloud storage. The chat screen loads the latest 300 messages per conversation; stored earlier messages are retained in SQLite. The directory returns up to 200 matching people. Polling gives small-group live updates without an additional WebSocket service.
-
-The countryside image was generated specifically for this rebuild and is bundled locally. Original contact photos supplied in the project are retained in `public/legacy`. Inter's font license is included in `docs/INTER-LICENSE.txt`.
